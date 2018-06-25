@@ -60,7 +60,14 @@ class SumoAPILogger():
             requests.post(url=self.collector_url,
                           data=json.dumps(pod),
                           headers=self.headers)
-
+        
+        log.info("getting data for events")
+        events = requests.get(url="{}/api/v1/events".format(self.k8s_api_url)).json()
+        for event in events["items"]:
+            log.info("pushing to sumo")
+            requests.post(url=self.collector_url,
+                          data=json.dumps(event),
+                          headers=self.headers)
 
 if __name__ == '__main__':
     SumoAPILogger = SumoAPILogger()
