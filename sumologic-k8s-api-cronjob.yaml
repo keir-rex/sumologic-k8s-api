@@ -17,7 +17,7 @@ spec:
           containers:
           - name:  sumologic-k8s-api
             imagePullPolicy: Always
-            image: mcluskey/sumologic-k8s-api:events
+            image: frankreno/sumologic-k8s-api:events
             env:
             - name: SUMO_HTTP_URL
               value: <INSERT_URL_HERE>
