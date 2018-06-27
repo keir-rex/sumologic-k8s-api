@@ -18,16 +18,12 @@ spec:
           containers:
           - name:  sumologic-k8s-api
             imagePullPolicy: Always
-            image: mcluskey/sumologic-k8s-api:events
+            image: frankreno/sumologic-k8s-api:latest
             env:
             - name: SUMO_HTTP_URL
               value: <INSERT_URL_HERE>
             - name: K8S_API_URL
               value: http://127.0.0.1:8001
-            - name: X-Sumo-Category
-              value: k8s/api
-            - name: X-Sumo-Name
-              value: sumologic-k8s-api
           - name:  kubectl
             image: gcr.io/google_containers/kubectl:v1.0.7
             command: ["/kubectl"]
